@@ -10,9 +10,11 @@ make.fun's "Sum up 18 November's world news in one image" bounty, $250 in USDC.
 
 ## The day in one page
 
-- **Gulf war** — Iran fired drones at U.S. bases in Kuwait and Bahrain, a
-  day after U.S. warplanes struck a missile site on Qeshm Island; Iran also
-  downed a U.S. MQ-9 drone near the Strait of Hormuz.
+"THE WORLD TODAY" — a broadsheet front page with illustrated panels:
+
+- **Gulf war (lead)** — Iran fired drones at U.S. bases in Kuwait and
+  Bahrain, a day after U.S. warplanes struck a missile site on Qeshm
+  Island; Iran also downed a U.S. MQ-9 drone near the Strait of Hormuz.
 - **Ukraine** — Ukrainian drones and missiles hit the Kerch Bridge for a
   second day; one of its two arches collapsed into the strait.
 - **Summit** — Xi hosted Putin in Shenzhen ahead of Thursday's first-ever
@@ -20,7 +22,7 @@ make.fun's "Sum up 18 November's world news in one image" bounty, $250 in USDC.
 - **U.S. Senate** — Democrat Mary Peltola won Alaska, giving Democrats a
   projected 56-44 Senate majority.
 - **Ebola** — The DR Congo outbreak passed 11,000 cases and 5,400 deaths;
-  nearly three in four infected children under 5 do not survive.
+  most infected children under five do not survive.
 - **Tech** — Nvidia posted a record quarter as AI demand doubled revenue;
   a major cyber incident also hit sites linked to Zoom, CNN, HSBC and IKEA.
 - **Disaster** — A Russian military plane crashed in Siberia, killing all
@@ -35,10 +37,12 @@ mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 # writes out/entry.png (1024x1024 PNG, < 1 MiB)
 ```
 
-`entry.png` is rendered by `generate_image.py` (Pillow, text drawn so every
-word stays legible) from the reporting above; `main.py` copies it to the
-output directory, because the grader runs with no network. `DESIGN.md` states
-the design philosophy ("Front Page Formalism") behind the page.
+`main.py` draws the whole page itself — a hand-made 5x7 bitmap font,
+hand-rolled drawing primitives (rects, Bresenham lines, filled circles,
+scanline polygons, stars) and a hand-rolled PNG encoder. Python standard
+library only, no network, no file reads at run time, no clock, no
+randomness: two runs write byte-identical output. `DESIGN.md` states the
+design philosophy ("Front Page Formalism") behind the page.
 
 ---
 
